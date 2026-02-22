@@ -5,30 +5,41 @@ import Button from "./buttons/Button";
 import { BiSolidDownload } from "react-icons/bi";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
-const navItems = ["Home", "About", "Portfolio", "Contact"];
+const navItems = [
+
+    "About",
+    "Skills & Expertise",
+    "Portfolio",
+    "Education",
+    "Contact",
+];
 
 const Nav = () => {
-    const [activeHash, setActiveHash] = useState("/");
+    const [activeHash, setActiveHash] = useState("/"); // initialize here
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
-        setActiveHash(window.location.hash || "/");
-
-        const handleHashChange = () => setActiveHash(window.location.hash || "/");
+        const handleHashChange = () =>
+            setActiveHash(window.location.hash || "/");
         const handleScroll = () => setScrolled(window.scrollY > 20);
 
         window.addEventListener("hashchange", handleHashChange);
         window.addEventListener("scroll", handleScroll);
+
         return () => {
             window.removeEventListener("hashchange", handleHashChange);
             window.removeEventListener("scroll", handleScroll);
         };
     }, []);
 
-    const containerVariants:Variants = {
+    const containerVariants: Variants = {
         hidden: { opacity: 0, y: -20 },
-        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+        show: {
+            opacity: 1,
+            y: 0,
+            transition: { duration: 0.5, ease: "easeOut" },
+        },
     };
 
     return (
@@ -38,9 +49,7 @@ const Nav = () => {
                 initial="hidden"
                 animate="show"
                 className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-                    scrolled
-                        ? "bg-black/60 backdrop-blur-md"
-                        : "bg-transparent"
+                    scrolled ? "bg-black/60 backdrop-blur-md" : "bg-transparent"
                 }`}
             >
                 <div className="flex w-full max-w-7xl py-4 px-5 xl:px-0 mx-auto items-center justify-between">
@@ -58,7 +67,10 @@ const Nav = () => {
                     <nav className="hidden md:block">
                         <ul className="flex items-center gap-8 font-koulen">
                             {navItems.map((item) => {
-                                const hash = item === "Home" ? "/" : `#${item.toLowerCase()}`;
+                                const hash =
+                                    item === "Home"
+                                        ? "/"
+                                        : `#${item.toLowerCase()}`;
                                 const isActive = activeHash === hash;
                                 return (
                                     <li key={item}>
@@ -75,7 +87,11 @@ const Nav = () => {
                                                 <motion.span
                                                     layoutId="nav-underline"
                                                     className="absolute bottom-0 left-0 w-full h-px bg-white"
-                                                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                                    transition={{
+                                                        type: "spring",
+                                                        stiffness: 300,
+                                                        damping: 30,
+                                                    }}
                                                 />
                                             )}
                                         </a>
@@ -87,7 +103,11 @@ const Nav = () => {
 
                     {/* Download CV */}
                     <div className="hidden md:block">
-                        <Button mainClass="!py-2" RightIcon={BiSolidDownload} iconClass="text-base">
+                        <Button
+                            mainClass="!py-2"
+                            RightIcon={BiSolidDownload}
+                            iconClass="text-base"
+                        >
                             Download CV
                         </Button>
                     </div>
@@ -122,11 +142,18 @@ const Nav = () => {
                             initial={{ x: "100%" }}
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
-                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                            transition={{
+                                type: "spring",
+                                stiffness: 300,
+                                damping: 30,
+                            }}
                         >
                             <ul className="flex flex-col gap-6 font-koulen">
                                 {navItems.map((item, idx) => {
-                                    const hash = item === "Home" ? "/" : `#${item.toLowerCase()}`;
+                                    const hash =
+                                        item === "Home"
+                                            ? "/"
+                                            : `#${item.toLowerCase()}`;
                                     const isActive = activeHash === hash;
                                     return (
                                         <motion.li
@@ -137,9 +164,13 @@ const Nav = () => {
                                         >
                                             <a
                                                 href={hash}
-                                                onClick={() => setIsSidebarOpen(false)}
+                                                onClick={() =>
+                                                    setIsSidebarOpen(false)
+                                                }
                                                 className={`text-2xl tracking-widest transition-colors ${
-                                                    isActive ? "text-white" : "text-neutral-500 hover:text-white"
+                                                    isActive
+                                                        ? "text-white"
+                                                        : "text-neutral-500 hover:text-white"
                                                 }`}
                                             >
                                                 {item}
@@ -150,7 +181,11 @@ const Nav = () => {
                             </ul>
 
                             <div className="mt-10">
-                                <Button mainClass="!py-2 w-full" RightIcon={BiSolidDownload} iconClass="text-base">
+                                <Button
+                                    mainClass="!py-2 w-full"
+                                    RightIcon={BiSolidDownload}
+                                    iconClass="text-base"
+                                >
                                     Download CV
                                 </Button>
                             </div>

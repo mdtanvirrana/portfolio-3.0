@@ -2,13 +2,13 @@
 
 import * as React from 'react';
 import {
-  type HTMLMotionProps,
   motion,
   useMotionValue,
   useSpring,
+  type HTMLMotionProps,
   type SpringOptions,
   type Transition,
-} from 'motion/react';
+} from "framer-motion";
 
 import { cn } from '@/lib/utils';
 

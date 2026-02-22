@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import Image from "next/image";
-import img from "../../public/tanvir.jpg";
+import img from "../public/tanvir.jpg";
 import { containerVariants, itemVariants, lineVariants, useScrollReveal } from "@/lib/utils";
 
 const socials = [

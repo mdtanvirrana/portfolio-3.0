@@ -30,7 +30,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${leagueGothic.variable} ${koulen.variable} w-full max-w-[92rem] mx-auto px-5 md:px-10`}
+                className={`${leagueGothic.variable} ${koulen.variable} w-full max-w-368 mx-auto px-5 md:px-10`}
             >
                 <ShootingStarsBackground />
                 <LenisProvider>

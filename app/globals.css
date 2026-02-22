@@ -1,0 +1,206 @@
+@import "tailwindcss";
+
+/* ── Fonts ───────────────────────────────────────────────────────────────── */
+@theme inline {
+  --font-koulen: var(--font-koulen);
+  --font-league: var(--font-league-gothic);
+}
+
+/* ── Base ────────────────────────────────────────────────────────────────── */
+@layer base {
+  :root {
+    --radius: 0.5rem;
+  }
+
+  * {
+    cursor: none !important;
+  }
+
+  *::selection {
+    background-color: white;
+    color: #4b5563; /* gray-600 */
+  }
+
+  body {
+    font-family: Arial, Helvetica, sans-serif;
+    color: #fffff0;
+    background: #000000;
+  }
+
+  /* Hide Next.js static indicator */
+  .nextjs-static-indicator-toast-icon,
+  .nextjs-toast,
+  .nextjs-static-indicator-toast-wrapper {
+    display: none !important;
+  }
+
+  html {
+    scrollbar-gutter: stable;
+  }
+}
+
+/* ── Grid background — only on 2xl+ screens ─────────────────────────────── */
+@media (min-width: 1536px) {
+  .mainContainer {
+    --gap: 22em;
+    --line: 1px;
+    --color: rgba(255, 255, 255, 0.08);
+
+    background-image:
+      linear-gradient(
+        -90deg,
+        transparent calc(var(--gap) - var(--line)),
+        var(--color) calc(var(--gap) - var(--line) + 1px),
+        var(--color) var(--gap)
+      ),
+      linear-gradient(
+        0deg,
+        transparent calc(var(--gap) - var(--line)),
+        var(--color) calc(var(--gap) - var(--line) + 1px),
+        var(--color) var(--gap)
+      );
+    background-size: var(--gap) var(--gap);
+  }
+}
+
+/* ── Nav menu styles ─────────────────────────────────────────────────────── */
+.menu a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  font-size: 16px;
+  position: relative;
+  color: #fff;
+  text-transform: uppercase;
+  transition: all 300ms cubic-bezier(0.075, 0.82, 0.165, 1);
+  text-align: center;
+  padding: 6px 15px;
+}
+
+.menu a::after,
+.menu a::before {
+  content: "";
+  position: absolute;
+  display: block;
+  width: 0%;
+  height: 0%;
+  transition: all 0.5s ease;
+}
+
+.menu a::after {
+  top: 0;
+  left: 0;
+  border-top: 2px solid transparent;
+  border-left: 2px solid transparent;
+}
+
+.menu a::before {
+  right: 0;
+  bottom: 0;
+  border-bottom: 2px solid transparent;
+  border-right: 2px solid transparent;
+}
+
+.menu .navitem:hover::before,
+.menu .navitem:hover::after {
+  width: 100%;
+  height: 100%;
+  border-color: #fff;
+}
+
+/* ── Fancy button ────────────────────────────────────────────────────────── */
+.fancy {
+  background-color: whitesmoke;
+  border: 2px solid white;
+  border-radius: 0;
+  box-sizing: border-box;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  margin: 0;
+  outline: none;
+  overflow: visible;
+  padding: 1em 2em;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+  user-select: none;
+  font-size: 13px;
+}
+
+.fancy .text {
+  font-size: 16px;
+  display: block;
+  text-align: left;
+  transition: all 0.3s ease-in-out;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: black;
+}
+
+.fancy .top-key {
+  height: 2px;
+  width: 1.5625rem;
+  top: -2px;
+  left: 0.625rem;
+  position: absolute;
+  background: black;
+  z-index: 10;
+  transition: width 0.5s ease-out, left 0.3s ease-out;
+}
+
+.fancy .bottom-key-1 {
+  height: 2px;
+  width: 1.5625rem;
+  right: 1.875rem;
+  bottom: -2px;
+  position: absolute;
+  background: black;
+  transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy .bottom-key-2 {
+  height: 2px;
+  width: 0.625rem;
+  right: 0.625rem;
+  bottom: -2px;
+  position: absolute;
+  background: black;
+  transition: width 0.5s ease-out, right 0.3s ease-out;
+}
+
+.fancy:hover {
+  color: white;
+  background: black;
+}
+
+.fancy:hover::before {
+  width: 0.9375rem;
+  background: white;
+}
+
+.fancy:hover .text {
+  color: white;
+}
+
+.fancy .icon-class {
+  color: black;
+  transition: color 0.3s ease-in-out;
+}
+
+.fancy:hover .icon-class {
+  color: white;
+}
+
+.fancy:hover .top-key {
+  left: -2px;
+  width: 0px;
+}
+
+.fancy:hover .bottom-key-1,
+.fancy:hover .bottom-key-2 {
+  right: 0;
+  width: 0;
+}

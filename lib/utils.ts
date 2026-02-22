@@ -10,7 +10,7 @@ export function cn(...inputs: ClassValue[]) {
 
 export function useScrollReveal() {
     const ref = useRef(null);
-    const isInView = useInView(ref, { once: true, margin: "-80px" });
+    const isInView = useInView(ref, { once: true, margin: "0px 0px -45% 0px" });
     return { ref, isInView };
 }
 
