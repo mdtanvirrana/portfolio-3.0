@@ -40,7 +40,7 @@ const About = () => {
 
                     <motion.div className="space-y-4 normal-case" variants={itemVariants}>
                         <p className="text-neutral-500 text-sm leading-relaxed">
-                            Hello, I'm Tanvir Rana, a passionate and dedicated Full-Stack Developer
+                            Hello, I&apos;m Tanvir Rana, a passionate and dedicated Full-Stack Developer
                             committed to creating scalable, efficient, and user-friendly web
                             applications. I thrive on solving complex challenges and delivering
                             exceptional digital experiences with a focus on innovation and quality.
@@ -60,7 +60,7 @@ const About = () => {
                             detail, creativity, and a deep commitment to continuous learning.
                         </p>
                         <p className="text-neutral-400 text-sm leading-relaxed">
-                            Let's connect to collaborate and create impactful digital solutions
+                            Let&apos;s connect to collaborate and create impactful digital solutions
                             together!
                         </p>
                     </motion.div>

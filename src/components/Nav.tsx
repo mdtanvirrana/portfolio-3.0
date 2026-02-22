@@ -1,6 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, Variants } from "framer-motion";
 import Button from "./buttons/Button";
 import { BiSolidDownload } from "react-icons/bi";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
@@ -26,7 +26,7 @@ const Nav = () => {
         };
     }, []);
 
-    const containerVariants = {
+    const containerVariants:Variants = {
         hidden: { opacity: 0, y: -20 },
         show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
     };

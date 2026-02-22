@@ -10,8 +10,8 @@ const Button = ({
 }: {
     mainClass?: string;
     iconClass?: string;
-    LeftIcon?: any;
-    RightIcon?: any;
+    LeftIcon?: React.ElementType;
+    RightIcon?: React.ElementType;
 	children: React.ReactNode
 }) => {
     return (

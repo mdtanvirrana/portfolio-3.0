@@ -1,5 +1,5 @@
 "use client";
-import React, { useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
 import { ImArrowUpRight2 } from "react-icons/im";
 import {
@@ -12,7 +12,7 @@ import Button from "./buttons/Button";
 const contactInfo = [
     { icon: FaEnvelope, label: "Email", value: "tanvirrana@example.com", href: "mailto:tanvirrana@example.com" },
     { icon: FaPhoneAlt, label: "Phone", value: "+880 1700 000000", href: "tel:+8801700000000" },
-    { icon: FaMapMarkerAlt, label: "Location", value: "Mujibnagar, Meherpur, Bangladesh", href: null },
+    { icon: FaMapMarkerAlt, label: "Location", value: "Mujibnagar, Meherpur, Bangladesh", href: '#' },
 ];
 
 const socials = [
@@ -27,7 +27,6 @@ const inputBase =
 
 const ContactSection = () => {
     const { ref, isInView } = useScrollReveal();
-    const [focused, setFocused] = useState<string | null>(null);
 
     return (
         <motion.section
@@ -50,7 +49,7 @@ const ContactSection = () => {
                 <motion.div variants={itemVariants} className="space-y-10">
                     <p className="text-neutral-500 text-sm normal-case leading-relaxed max-w-sm">
                         Have a project in mind or just want to say hi? Drop me a message
-                        and let's create something impactful together.
+                        and let&apos;s create something impactful together.
                     </p>
 
                     <div className="space-y-5">
@@ -106,30 +105,22 @@ const ContactSection = () => {
                             type="text"
                             placeholder="Your Name"
                             className={inputBase}
-                            onFocus={() => setFocused("name")}
-                            onBlur={() => setFocused(null)}
                         />
                         <input
                             type="email"
                             placeholder="Your Email"
                             className={inputBase}
-                            onFocus={() => setFocused("email")}
-                            onBlur={() => setFocused(null)}
                         />
                     </div>
                     <input
                         type="text"
                         placeholder="Subject"
                         className={inputBase}
-                        onFocus={() => setFocused("subject")}
-                        onBlur={() => setFocused(null)}
                     />
                     <textarea
                         rows={6}
                         placeholder="Your Message"
                         className={`${inputBase} resize-none`}
-                        onFocus={() => setFocused("message")}
-                        onBlur={() => setFocused(null)}
                     />
                     <Button mainClass="!py-2.5" RightIcon={ImArrowUpRight2} iconClass="text-lg">
                         Send Message
