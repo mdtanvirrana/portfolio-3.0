@@ -1,8 +1,10 @@
-
 import type { Metadata } from "next";
 import { League_Gothic, Koulen } from "next/font/google";
 import "./globals.css";
 import Nav from "../components/Nav";
+import CustomCursor from "@/components/CustomCursor";
+import LenisProvider from "@/components/LenisProvider";
+import ShootingStarsBackground from "@/components/ShootingStarsBackground";
 
 const leagueGothic = League_Gothic({
     variable: "--font-league-gothic",
@@ -16,7 +18,7 @@ const koulen = Koulen({
 });
 
 export const metadata: Metadata = {
-    title: "Portfolio",
+    title: "Tanvir Rana",
     description: "Tanvir Rana's Portfolio",
 };
 
@@ -28,12 +30,16 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={` ${leagueGothic.variable} ${koulen.variable} w-full max-w-[92rem] mx-auto px-5 md:px-10 bg-[#09090B]`}
+                className={`${leagueGothic.variable} ${koulen.variable} w-full max-w-[92rem] mx-auto px-5 md:px-10`}
             >
-                <div className="mainContainer border-r h-full border-neutral-800">
-                    <Nav />
-                    {children}
-                </div>
+                <ShootingStarsBackground />
+                <LenisProvider>
+                    <div className=" relative z-10 h-full">
+                        <Nav />
+                        <CustomCursor />
+                        {children}
+                    </div>
+                </LenisProvider>
             </body>
         </html>
     );

@@ -1,110 +1,164 @@
 "use client";
-
 import React, { useState, useEffect } from "react";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import Button from "./buttons/Button";
 import { BiSolidDownload } from "react-icons/bi";
-import { anim } from "./Animation";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
+const navItems = ["Home", "About", "Portfolio", "Contact"];
+
 const Nav = () => {
-    const [activeHash, setActiveHash] = useState(window.location.hash || "/");
+    const [activeHash, setActiveHash] = useState("/");
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+    const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
-        const handleHashChange = () => {
-            setActiveHash(window.location.hash || "/");
-        };
+        setActiveHash(window.location.hash || "/");
+
+        const handleHashChange = () => setActiveHash(window.location.hash || "/");
+        const handleScroll = () => setScrolled(window.scrollY > 20);
 
         window.addEventListener("hashchange", handleHashChange);
-        return () => window.removeEventListener("hashchange", handleHashChange);
+        window.addEventListener("scroll", handleScroll);
+        return () => {
+            window.removeEventListener("hashchange", handleHashChange);
+            window.removeEventListener("scroll", handleScroll);
+        };
     }, []);
 
-    const toggleSidebar = () => {
-        setIsSidebarOpen((prev) => !prev);
-    };
-
-    const sidebarVariants = {
-        hidden: { x: "100%" },
-        visible: { x: 0 },
+    const containerVariants = {
+        hidden: { opacity: 0, y: -20 },
+        show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
     };
 
     return (
-        <div className="flex w-full max-w-7xl py-5 px-5 xl:px-0 mx-auto items-center justify-between">
-            {/* Desktop Navigation */}
-            <nav className="hidden md:block w-full max-w-fit">
-                <ul className="menu font-koulen gap-10 flex justify-between items-center mx-1">
-                    {["Home", "About", "Portfolio", "Contact"].map((item) => {
-                        const hash = item === "Home" ? "/" : `#${item.toLowerCase()}`;
-                        return (
-                            <li key={item}>
-                                <a
-                                    href={hash}
-                                    className={
-                                        activeHash === hash
-                                            ? "ring-2 ring-white !py-[4px] !px-[15px]"
-                                            : "navitem !text-gray-400 hover:before:!border-gray-400 hover:after:!border-gray-400"
-                                    }
-                                >
-                                    {item}
-                                </a>
-                            </li>
-                        );
-                    })}
-                </ul>
-            </nav>
-
-
-            <button
-                className="block md:hidden text-white text-4xl"
-                onClick={toggleSidebar}
-            >
-                {isSidebarOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
-            </button>
-
-            {/* Sidebar for Mobile */}
-            <motion.div
-                className={`fixed top-0 right-0 h-full w-2/3 bg-gray-800 text-white z-50 flex flex-col items-center pt-10 shadow-lg md:hidden ${
-                    isSidebarOpen ? "" : "hidden"
-                }`}
+        <>
+            <motion.header
+                variants={containerVariants}
                 initial="hidden"
-                animate={isSidebarOpen ? "visible" : "hidden"}
-                variants={sidebarVariants}
-                transition={{ type: "spring", stiffness: 70 }}
+                animate="show"
+                className={`sticky top-0 z-50 w-full transition-all duration-300 ${
+                    scrolled
+                        ? "bg-black/60 backdrop-blur-md"
+                        : "bg-transparent"
+                }`}
             >
-                <ul className="menu font-koulen gap-5 flex flex-col items-center">
-                    {["Home", "About", "Portfolio", "Contact"].map((item) => {
-                        const hash = `#${item.toLowerCase()}`;
-                        return (
-                            <li key={item} className="mb-4 px-10">
-                                <a
-                                    href={hash}
-                                    onClick={toggleSidebar}
-                                    className={
-                                        activeHash === hash
-                                            ? "ring-2 ring-white !py-[4px] !px-[15px]"
-                                            : "navitem !text-gray-400 hover:before:!border-gray-400 hover:after:!border-gray-400"
-                                    }
-                                >
-                                    {item}
-                                </a>
-                            </li>
-                        );
-                    })}
-                </ul>
-            </motion.div>
+                <div className="flex w-full max-w-7xl py-4 px-5 xl:px-0 mx-auto items-center justify-between">
+                    {/* Logo */}
+                    <motion.a
+                        href="/"
+                        className="font-koulen text-white text-xl tracking-widest"
+                        whileHover={{ opacity: 0.7 }}
+                        transition={{ duration: 0.2 }}
+                    >
+                        TR<span className="text-neutral-500">.</span>
+                    </motion.a>
 
-            {/* Download CV Button */}
-            <motion.div
-                variants={anim("down", 0.8)}
-                whileInView={"show"}
-                viewport={{ once: true, amount: 0.5 }}
-            >
-                <Button mainClass="!py-2.5" RightIcon={BiSolidDownload} iconClass={"text-lg"}>
-                    Download cv
-                </Button>
-            </motion.div>
-        </div>
+                    {/* Desktop nav */}
+                    <nav className="hidden md:block">
+                        <ul className="flex items-center gap-8 font-koulen">
+                            {navItems.map((item) => {
+                                const hash = item === "Home" ? "/" : `#${item.toLowerCase()}`;
+                                const isActive = activeHash === hash;
+                                return (
+                                    <li key={item}>
+                                        <a
+                                            href={hash}
+                                            className={`relative text-sm tracking-widest transition-colors duration-200 pb-1 ${
+                                                isActive
+                                                    ? "text-white"
+                                                    : "text-neutral-500 hover:text-neutral-200"
+                                            }`}
+                                        >
+                                            {item}
+                                            {isActive && (
+                                                <motion.span
+                                                    layoutId="nav-underline"
+                                                    className="absolute bottom-0 left-0 w-full h-px bg-white"
+                                                    transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                                                />
+                                            )}
+                                        </a>
+                                    </li>
+                                );
+                            })}
+                        </ul>
+                    </nav>
+
+                    {/* Download CV */}
+                    <div className="hidden md:block">
+                        <Button mainClass="!py-2" RightIcon={BiSolidDownload} iconClass="text-base">
+                            Download CV
+                        </Button>
+                    </div>
+
+                    {/* Mobile hamburger */}
+                    <button
+                        className="block md:hidden text-white text-2xl"
+                        onClick={() => setIsSidebarOpen((p) => !p)}
+                        aria-label="Toggle menu"
+                    >
+                        {isSidebarOpen ? <AiOutlineClose /> : <AiOutlineMenu />}
+                    </button>
+                </div>
+            </motion.header>
+
+            {/* Mobile sidebar */}
+            <AnimatePresence>
+                {isSidebarOpen && (
+                    <>
+                        {/* Backdrop */}
+                        <motion.div
+                            className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden"
+                            initial={{ opacity: 0 }}
+                            animate={{ opacity: 1 }}
+                            exit={{ opacity: 0 }}
+                            onClick={() => setIsSidebarOpen(false)}
+                        />
+
+                        {/* Drawer */}
+                        <motion.div
+                            className="fixed top-0 right-0 h-full w-64 bg-neutral-950 border-l border-neutral-800 z-50 flex flex-col pt-20 px-8 md:hidden"
+                            initial={{ x: "100%" }}
+                            animate={{ x: 0 }}
+                            exit={{ x: "100%" }}
+                            transition={{ type: "spring", stiffness: 300, damping: 30 }}
+                        >
+                            <ul className="flex flex-col gap-6 font-koulen">
+                                {navItems.map((item, idx) => {
+                                    const hash = item === "Home" ? "/" : `#${item.toLowerCase()}`;
+                                    const isActive = activeHash === hash;
+                                    return (
+                                        <motion.li
+                                            key={item}
+                                            initial={{ opacity: 0, x: 20 }}
+                                            animate={{ opacity: 1, x: 0 }}
+                                            transition={{ delay: idx * 0.07 }}
+                                        >
+                                            <a
+                                                href={hash}
+                                                onClick={() => setIsSidebarOpen(false)}
+                                                className={`text-2xl tracking-widest transition-colors ${
+                                                    isActive ? "text-white" : "text-neutral-500 hover:text-white"
+                                                }`}
+                                            >
+                                                {item}
+                                            </a>
+                                        </motion.li>
+                                    );
+                                })}
+                            </ul>
+
+                            <div className="mt-10">
+                                <Button mainClass="!py-2 w-full" RightIcon={BiSolidDownload} iconClass="text-base">
+                                    Download CV
+                                </Button>
+                            </div>
+                        </motion.div>
+                    </>
+                )}
+            </AnimatePresence>
+        </>
     );
 };
 
