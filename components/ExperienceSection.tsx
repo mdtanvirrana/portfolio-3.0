@@ -5,31 +5,22 @@ import { containerVariants, itemVariants, lineVariants, useScrollReveal } from "
 
 const experiences = [
     {
-        period: "2023 – Present",
+        period: "May 2025 – Present",
         role: "Full Stack Developer",
-        company: "Freelance / Self-Employed",
-        type: "Freelance",
+        company: "HSBLCO Solution LLC",
+        type: "Professional Experience",
         description:
-            "Building scalable full-stack web applications for clients worldwide. Delivering end-to-end solutions from UI design to deployment, primarily using React, Next.js, Laravel, and MySQL.",
-        tags: ["React", "Next.js", "Laravel", "MySQL", "TailwindCSS"],
+            "Developing scalable multi-tenant ERP systems, wallet-based payment applications, e-commerce platforms, and operational management software with a strong focus on clean backend architecture and secure workflows.",
+        tags: ["Laravel", "Remix", "Next.js", "React Native", "MySQL", "SQL Server"],
     },
     {
-        period: "2023",
-        role: "Full Stack Developer (Team)",
-        company: "LeadCenter.ai",
-        type: "Collaboration",
+        period: "Jul 2024 – Sep 2024",
+        role: "Frontend Developer Intern",
+        company: "Bangladeshi Software",
+        type: "Internship",
         description:
-            "Part of a development team for LeadCenter.ai, a lead management software. Responsibilities included adding features, optimising performance, and improving UI/UX to streamline lead management processes.",
-        tags: ["Laravel", "Vue.js", "Bootstrap", "MySQL"],
-    },
-    {
-        period: "2022 – 2023",
-        role: "Junior Web Developer",
-        company: "Personal Projects & Learning",
-        type: "Self-Directed",
-        description:
-            "Sharpened front-end and back-end fundamentals through intensive project-based learning, building various web applications and exploring modern frameworks and design patterns.",
-        tags: ["HTML", "CSS", "JavaScript", "PHP"],
+            "Completed a three-month internship focused on frontend development, translating designs into responsive interfaces, improving UI consistency, and strengthening practical workflow experience with modern component-based development.",
+        tags: ["React", "Next.js", "TypeScript", "Tailwind CSS"],
     },
 ];
 
@@ -39,6 +30,7 @@ const ExperienceSection = () => {
     return (
         <motion.section
             ref={ref}
+            id="experience"
             className="font-koulen capitalize w-full max-w-7xl mx-auto px-5 xl:px-0"
             variants={containerVariants}
             initial="hidden"

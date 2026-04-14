@@ -3,27 +3,22 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ImArrowUpRight2 } from "react-icons/im";
 import {
-    FaFacebookF, FaInstagram, FaLinkedinIn, FaGithub,
+    FaLinkedinIn, FaGithub,
     FaEnvelope, FaPhoneAlt, FaMapMarkerAlt,
 } from "react-icons/fa";
 import { containerVariants, itemVariants, lineVariants, useScrollReveal } from "@/lib/utils";
 import Button from "./buttons/Button";
 
 const contactInfo = [
-    { icon: FaEnvelope, label: "Email", value: "tanvirrana@example.com", href: "mailto:tanvirrana@example.com" },
-    { icon: FaPhoneAlt, label: "Phone", value: "+880 1700 000000", href: "tel:+8801700000000" },
-    { icon: FaMapMarkerAlt, label: "Location", value: "Mujibnagar, Meherpur, Bangladesh", href: '#' },
+    { icon: FaEnvelope, label: "Email", value: "tanvir.rana.soikat@gmail.com", href: "mailto:tanvir.rana.soikat@gmail.com" },
+    { icon: FaPhoneAlt, label: "Phone", value: "+8801402434727", href: "tel:+8801402434727" },
+    { icon: FaMapMarkerAlt, label: "Location", value: "Mujibnagar, Meherpur, Bangladesh", href: "#" },
 ];
 
 const socials = [
-    { icon: FaFacebookF, label: "Facebook", href: "#" },
-    { icon: FaInstagram, label: "Instagram", href: "#" },
-    { icon: FaLinkedinIn, label: "LinkedIn", href: "#" },
-    { icon: FaGithub, label: "GitHub", href: "#" },
+    { icon: FaLinkedinIn, label: "LinkedIn", href: "https://www.linkedin.com/in/mdtanvirrana" },
+    { icon: FaGithub, label: "GitHub", href: "https://github.com/mdtanvirrana" },
 ];
-
-const inputBase =
-    "w-full bg-transparent border border-neutral-800 text-neutral-300 text-sm normal-case px-4 py-3 outline-none placeholder:text-neutral-700 focus:border-neutral-500 transition-colors duration-300 font-sans";
 
 const ContactSection = () => {
     const { ref, isInView } = useScrollReveal();
@@ -31,6 +26,7 @@ const ContactSection = () => {
     return (
         <motion.section
             ref={ref}
+            id="contact"
             className="font-koulen capitalize w-full max-w-7xl mx-auto px-5 xl:px-0 pb-24"
             variants={containerVariants}
             initial="hidden"
@@ -48,8 +44,9 @@ const ContactSection = () => {
                 {/* Left — Info */}
                 <motion.div variants={itemVariants} className="space-y-10">
                     <p className="text-neutral-500 text-sm normal-case leading-relaxed max-w-sm">
-                        Have a project in mind or just want to say hi? Drop me a message
-                        and let&apos;s create something impactful together.
+                        If you need a full stack developer for ERP, SaaS, or business platform
+                        work, reach out. I&apos;m open to discussing product builds, backend-heavy
+                        systems, and frontend implementation.
                     </p>
 
                     <div className="space-y-5">
@@ -100,31 +97,32 @@ const ContactSection = () => {
 
                 {/* Right — Form */}
                 <motion.div variants={itemVariants} className="space-y-4">
-                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                        <input
-                            type="text"
-                            placeholder="Your Name"
-                            className={inputBase}
-                        />
-                        <input
-                            type="email"
-                            placeholder="Your Email"
-                            className={inputBase}
-                        />
+                    <div className="border border-neutral-800 p-6 space-y-4">
+                        <p className="text-neutral-400 text-sm normal-case leading-relaxed">
+                            The fastest way to reach me is by email or LinkedIn. You can also
+                            download the latest resume directly from this portfolio.
+                        </p>
+                        <div className="flex flex-wrap gap-4">
+                            <Button
+                                mainClass="!py-2.5"
+                                RightIcon={ImArrowUpRight2}
+                                iconClass="text-lg"
+                                href="mailto:tanvir.rana.soikat@gmail.com"
+                            >
+                                Send Email
+                            </Button>
+                            <Button
+                                mainClass="!py-2.5"
+                                RightIcon={ImArrowUpRight2}
+                                iconClass="text-lg"
+                                href="/tanvir-rana-resume.pdf"
+                                target="_blank"
+                                rel="noreferrer"
+                            >
+                                Download Resume
+                            </Button>
+                        </div>
                     </div>
-                    <input
-                        type="text"
-                        placeholder="Subject"
-                        className={inputBase}
-                    />
-                    <textarea
-                        rows={6}
-                        placeholder="Your Message"
-                        className={`${inputBase} resize-none`}
-                    />
-                    <Button mainClass="!py-2.5" RightIcon={ImArrowUpRight2} iconClass="text-lg">
-                        Send Message
-                    </Button>
                 </motion.div>
             </div>
         </motion.section>

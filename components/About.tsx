@@ -1,16 +1,15 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
+import { FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa";
 import Image from "next/image";
 import img from "../public/tanvir.jpg";
 import { containerVariants, itemVariants, lineVariants, useScrollReveal } from "@/lib/utils";
 
 const socials = [
-    { label: "Facebook", icon: FaFacebookF, href: "#" },
-    { label: "Instagram", icon: FaInstagram, href: "#" },
-    { label: "LinkedIn", icon: FaLinkedinIn, href: "#" },
-    { label: "GitHub", icon: FaGithub, href: "#" },
+    { label: "LinkedIn", icon: FaLinkedinIn, href: "https://www.linkedin.com/in/mdtanvirrana" },
+    { label: "GitHub", icon: FaGithub, href: "https://github.com/mdtanvirrana" },
+    { label: "Email", icon: FaEnvelope, href: "mailto:tanvir.rana.soikat@gmail.com" },
 ];
 
 const About = () => {
@@ -19,6 +18,7 @@ const About = () => {
     return (
         <motion.section
             ref={ref}
+            id="about"
             className="font-koulen w-full max-w-7xl px-5 xl:px-0 mx-auto"
             variants={containerVariants}
             initial="hidden"
@@ -40,28 +40,26 @@ const About = () => {
 
                     <motion.div className="space-y-4 normal-case" variants={itemVariants}>
                         <p className="text-neutral-500 text-sm leading-relaxed">
-                            Hello, I&apos;m Tanvir Rana, a passionate and dedicated Full-Stack Developer
-                            committed to creating scalable, efficient, and user-friendly web
-                            applications. I thrive on solving complex challenges and delivering
-                            exceptional digital experiences with a focus on innovation and quality.
+                            I&apos;m Tanvir Rana, a full stack developer building secure and scalable
+                            web applications with Laravel, React, Next.js, and Remix. My recent
+                            work has centered on ERP platforms, financial systems, and
+                            multi-role applications that need clean architecture and dependable
+                            backend logic.
                         </p>
                         <p className="text-neutral-500 text-sm leading-relaxed">
-                            I have completed my Diploma in Computer Science from Kushtia Polytechnic
-                            Institute (2020–2024). I am from Mujibnagar, Meherpur, Bangladesh.
-                            Outside of work, I am always eager to learn new technologies to stay
-                            ahead in the ever-evolving tech world. I also have a deep passion for
-                            photography — photoshoots are not just a hobby but a creative outlet
-                            that I truly enjoy.
+                            I completed a Diploma in Computer Science and Engineering from
+                            Kushtia Polytechnic Institute with a CGPA of 3.59. I&apos;m from
+                            Mujibnagar, Meherpur, Bangladesh, and I keep improving through
+                            hands-on product development and continuous learning.
                         </p>
                         <p className="text-neutral-500 text-sm leading-relaxed">
-                            With a strong foundation in both front-end and back-end development, I
-                            enjoy building solutions that are not only functional but also visually
-                            appealing and intuitive for users. My approach is driven by attention to
-                            detail, creativity, and a deep commitment to continuous learning.
+                            Alongside backend architecture, I also enjoy frontend work that feels
+                            clear and usable. That includes my three-month frontend internship at
+                            Bangladeshi Software from July 2024 to September 2024, where I
+                            strengthened my UI implementation and component-based workflow.
                         </p>
                         <p className="text-neutral-400 text-sm leading-relaxed">
-                            Let&apos;s connect to collaborate and create impactful digital solutions
-                            together!
+                            Outside of development, photography remains a strong personal interest.
                         </p>
                     </motion.div>
 

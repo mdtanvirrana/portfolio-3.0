@@ -6,18 +6,26 @@ const Button = ({
     iconClass,
     LeftIcon,
     RightIcon,
-	children
+    children,
+    href = "#",
+    target,
+    rel,
 }: {
     mainClass?: string;
     iconClass?: string;
     LeftIcon?: React.ElementType;
     RightIcon?: React.ElementType;
-	children: React.ReactNode
+    children: React.ReactNode;
+    href?: string;
+    target?: string;
+    rel?: string;
 }) => {
     return (
         <Link
             className={`fancy ${mainClass} !flex w-fit !items-center gap-2 py-2.5`}
-            href="#"
+            href={href}
+            target={target}
+            rel={rel}
         >
             <span className="top-key"></span>
             {LeftIcon && (

@@ -6,24 +6,32 @@ import { containerVariants, itemVariants, lineVariants, useScrollReveal } from "
 
 const education = [
     {
-        period: "2020 – 2024",
-        degree: "Diploma in Computer Science",
+        period: "2021 – 2024",
+        degree: "Diploma in Computer Science and Engineering",
         institution: "Kushtia Polytechnic Institute",
         location: "Kushtia, Bangladesh",
         type: "Diploma",
         description:
-            "Completed a four-year diploma focusing on computer science fundamentals, software development, networking, and database management. Built a strong technical foundation that underpins all professional work.",
-        highlights: ["Software Engineering", "Database Management", "Networking", "Web Development"],
+            "Completed diploma studies with a CGPA of 3.59, building a strong foundation in software development, database systems, networking, and practical engineering fundamentals.",
+        highlights: ["CGPA 3.59", "Software Engineering", "Database Management", "Web Development"],
     },
     {
         period: "2019 – 2020",
-        degree: "Secondary School Certificate (SSC)",
-        institution: "Mujibnagar Govt. High School",
+        degree: "SSC (Electrical)",
+        institution: "Dariapur High School",
         location: "Meherpur, Bangladesh",
-        type: "Secondary",
+        type: "Secondary School",
         description:
-            "Completed secondary education with a focus on science. Developed analytical thinking and a passion for technology that led to pursuing computer science.",
-        highlights: ["Science", "Mathematics", "Physics"],
+            "Completed secondary education with a GPA of 4.79, strengthening the academic base that led to pursuing software and engineering studies.",
+        highlights: ["GPA 4.79", "Electrical", "Science"],
+    },
+];
+
+const certifications = [
+    {
+        title: "PHP with Laravel",
+        issuer: "EDGE Bangladesh",
+        note: "Arranged by Islamic University of Bangladesh, Kushtia",
     },
 ];
 
@@ -33,6 +41,7 @@ const EducationSection = () => {
     return (
         <motion.section
             ref={ref}
+            id="education"
             className="font-koulen capitalize w-full max-w-7xl mx-auto px-5 xl:px-0"
             variants={containerVariants}
             initial="hidden"
@@ -121,6 +130,22 @@ const EducationSection = () => {
                 <p className="text-neutral-600 text-xs normal-case tracking-widest">
                     Always learning. Always building.
                 </p>
+            </motion.div>
+
+            <motion.div className="mt-10 space-y-4" variants={itemVariants}>
+                <div className="flex items-center gap-3">
+                    <span className="w-px h-4 bg-neutral-600 block" />
+                    <h3 className="text-neutral-500 text-xs tracking-widest normal-case">
+                        Certification
+                    </h3>
+                </div>
+                {certifications.map((cert, idx) => (
+                    <div key={idx} className="border border-neutral-800 p-5">
+                        <h4 className="text-white text-lg leading-none">{cert.title}</h4>
+                        <p className="text-neutral-500 text-sm normal-case mt-2">{cert.issuer}</p>
+                        <p className="text-neutral-600 text-sm normal-case mt-1">{cert.note}</p>
+                    </div>
+                ))}
             </motion.div>
         </motion.section>
     );

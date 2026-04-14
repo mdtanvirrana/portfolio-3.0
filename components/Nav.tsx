@@ -107,6 +107,12 @@ const Nav = () => {
                             mainClass="!py-2"
                             RightIcon={BiSolidDownload}
                             iconClass="text-base"
+<<<<<<< HEAD:components/Nav.tsx
+=======
+                            href="/tanvir-rana-resume.pdf"
+                            target="_blank"
+                            rel="noreferrer"
+>>>>>>> 505a33d (update full details base on the resume):src/components/Nav.tsx
                         >
                             Download CV
                         </Button>
@@ -185,6 +191,12 @@ const Nav = () => {
                                     mainClass="!py-2 w-full"
                                     RightIcon={BiSolidDownload}
                                     iconClass="text-base"
+<<<<<<< HEAD:components/Nav.tsx
+=======
+                                    href="/tanvir-rana-resume.pdf"
+                                    target="_blank"
+                                    rel="noreferrer"
+>>>>>>> 505a33d (update full details base on the resume):src/components/Nav.tsx
                                 >
                                     Download CV
                                 </Button>

@@ -21,34 +21,65 @@ interface Project {
 const projects: Project[] = [
     {
         id: 1,
-        title: "Giftly | Giftcard Ecommerce",
+        title: "Multi-Tenant ERP Platform",
         description:
-            "A feature-rich web application for selling gift cards, built using Laravel, Inertia.js, and React. Provides a seamless experience for customers to browse and purchase gift cards, while administrators manage users, brands, orders, and payments.",
-        techStack: ["React", "TypeScript", "Laravel", "Tailwind CSS", "Shadcn UI"],
+            "Designed and developed a scalable ERP platform where multiple companies operate independently on shared infrastructure, covering POS, inventory, HRM, CRM, payroll, hotel management, smart card refill, and accounts.",
+        techStack: ["Remix", "Laravel", "MySQL", "REST API", "Multi-Tenancy"],
         imageUrl: img,
         live: "#",
         type: "Fullstack",
     },
     {
         id: 2,
-        title: "Lead Management Application",
+        title: "Wallet-Based Payment Application",
         description:
-            "Part of a development team for 'leadcenter.ai,' a lead management software built with Laravel and Vue.js. Responsibilities included adding features, optimizing performance, and improving UI/UX to streamline lead management processes.",
-        techStack: ["Laravel", "Vue.js", "Bootstrap", "MySQL"],
+            "Built secure backend workflows for wallet top-up, transfers, PIN authentication, notifications, Stripe integration, and OAuth, with idempotency handling to prevent duplicate financial transactions.",
+        techStack: ["Laravel", "MySQL", "React Native", "Stripe", "OAuth"],
+        imageUrl: img,
+        live: "https://play.google.com/store/apps/details?id=com.swanpay",
+        type: "Fullstack",
+    },
+    {
+        id: 3,
+        title: "Brandzone E-commerce Platform",
+        description:
+            "Developed a role-based SaaS-style e-commerce system for users, vendors, brands, and super admins with multi-variant inventory, Stripe payments, KYC verification, and secure vendor onboarding.",
+        techStack: ["Next.js", "TypeScript", "Laravel", "MySQL", "Stripe"],
+        imageUrl: img,
+        live: "https://brandszoneglobal.com",
+        type: "Fullstack",
+    },
+    {
+        id: 4,
+        title: "Wayter Order Management System",
+        description:
+            "Built a real-time hospitality order management system with table-state handling, discount approval workflow, single-device login restriction, and transaction-based concurrency control.",
+        techStack: ["Laravel", "Blade", "SQL Server", "Concurrency Control"],
         imageUrl: img,
         live: "#",
+        type: "Backend Heavy",
+    },
+    {
+        id: 5,
+        title: "AllApply Government Service Platform",
+        description:
+            "Developed a multi-role service platform for overseas jobs, student applications, and visa-related workflows with dedicated dashboards for users, service providers, agencies, and admins.",
+        techStack: ["Next.js", "React", "Laravel", "MySQL", "Admin Panel"],
+        imageUrl: img,
+        live: "https://allapply.com.bd",
         type: "Fullstack",
     },
 ];
 
-const sideProjects: Project[] = [...projects, ...projects];
+const featuredProjects: Project[] = projects.slice(0, 3);
+const sideProjects: Project[] = projects.slice(3);
 
 const Portfolio = () => {
     const { ref: ref1, isInView: inView1 } = useScrollReveal();
     const { ref: ref2, isInView: inView2 } = useScrollReveal();
 
     return (
-        <div className="w-full max-w-7xl py-5 px-5 xl:px-0 mx-auto space-y-32">
+        <div id="portfolio" className="w-full max-w-7xl py-5 px-5 xl:px-0 mx-auto space-y-32">
             {/* ── Featured Projects ── */}
             <motion.div
                 ref={ref1}
@@ -67,7 +98,7 @@ const Portfolio = () => {
                 </motion.div>
 
                 <div className="space-y-28">
-                    {projects.map((project, i) => (
+                    {featuredProjects.map((project, i) => (
                         <motion.div
                             key={i}
                             className={`flex flex-col md:flex-row gap-10 items-center ${
@@ -81,7 +112,7 @@ const Portfolio = () => {
                                 whileHover={{ scale: 1.01 }}
                                 transition={{ duration: 0.4 }}
                             >
-                                <Link href="/portfolio">
+                                <Link href={project.live === "#" ? "#portfolio" : project.live} target={project.live === "#" ? undefined : "_blank"}>
                                     <Image
                                         quality={100}
                                         src={project.imageUrl}
@@ -117,7 +148,14 @@ const Portfolio = () => {
                                         ))}
                                     </div>
                                 </div>
-                                <Button RightIcon={ImArrowUpRight2} mainClass="!py-2" iconClass="text-lg">
+                                <Button
+                                    RightIcon={ImArrowUpRight2}
+                                    mainClass="!py-2"
+                                    iconClass="text-lg"
+                                    href={project.live === "#" ? "#contact" : project.live}
+                                    target={project.live === "#" ? undefined : "_blank"}
+                                    rel={project.live === "#" ? undefined : "noreferrer"}
+                                >
                                     Check Live
                                 </Button>
                             </div>
@@ -172,6 +210,16 @@ const Portfolio = () => {
                                     </span>
                                 ))}
                             </div>
+                            {project.live !== "#" && (
+                                <Link
+                                    href={project.live}
+                                    target="_blank"
+                                    rel="noreferrer"
+                                    className="inline-flex mt-4 text-xs tracking-widest text-neutral-400 hover:text-white transition-colors duration-200"
+                                >
+                                    Visit Project
+                                </Link>
+                            )}
                         </motion.div>
                     ))}
                 </div>

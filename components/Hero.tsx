@@ -20,6 +20,7 @@ const itemVariants:Variants = {
 const Hero = () => {
     return (
         <motion.div
+            id="home"
             className="font-koulen capitalize w-full max-w-7xl mx-auto px-5 xl:px-0 mt-52"
             variants={containerVariants}
             initial="hidden"
@@ -46,25 +47,31 @@ const Hero = () => {
             {/* Description */}
             <motion.div className="max-w-2xl space-y-2 mb-8" variants={itemVariants}>
                 <p className="text-neutral-500 text-sm sm:text-base leading-relaxed normal-case">
-                    A dedicated Full Stack Developer with a strong focus on crafting
-                    scalable and efficient web applications.
+                    Full Stack Developer focused on building scalable business platforms,
+                    multi-tenant ERP systems, and payment-driven applications.
                 </p>
                 <p className="text-neutral-500 text-sm sm:text-base leading-relaxed normal-case">
-                    With expertise in{" "}
+                    Experienced with{" "}
                     <span className="text-white font-medium">
-                        React, Next.js, Laravel, MySQL,
+                        Laravel, React, Next.js, Remix, TypeScript, and MySQL,
                     </span>{" "}
-                    and a passion for delivering fully functional and exceptional UI/UX
-                    experiences, I thrive in building user-centric solutions.
+                    with a strong focus on clean architecture, REST APIs, secure
+                    transaction workflows, and performance.
                 </p>
                 <p className="text-neutral-500 text-sm sm:text-base leading-relaxed normal-case">
-                    Let&apos;s connect to create impactful digital experiences!
+                    I build reliable products from polished frontends to backend systems
+                    that handle real business operations.
                 </p>
             </motion.div>
 
             {/* CTA */}
             <motion.div variants={itemVariants}>
-                <Button mainClass="!py-2.5" RightIcon={ImArrowUpRight2} iconClass="text-lg">
+                <Button
+                    mainClass="!py-2.5"
+                    RightIcon={ImArrowUpRight2}
+                    iconClass="text-lg"
+                    href="#portfolio"
+                >
                     Check Portfolio
                 </Button>
             </motion.div>

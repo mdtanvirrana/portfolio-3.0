@@ -11,10 +11,14 @@ import {
 
 const skills: Record<string, string[]> = {
     "Front-End Development": [
-        "HTML", "CSS", "JavaScript", "TypeScript", "React", "Next.js", "Tailwind CSS",
+        "React", "Next.js", "Remix", "TypeScript", "JavaScript", "Tailwind CSS", "Redux", "Framer Motion",
     ],
-    "Back-End Development": ["PHP", "Laravel", "Express.js", "MongoDB", "MySQL"],
-    "Tools & Libraries": ["Redux", "Framer Motion", "Ant Design", "ShadCN", "GitHub"],
+    "Back-End Development": [
+        "PHP", "Laravel", "REST API Architecture", "MySQL", "SQL Server", "Repository Pattern", "Service Layer",
+    ],
+    "Architecture & Tools": [
+        "DTOs", "Enums", "Action-Based Logic", "Idempotency", "Concurrency Control", "Git", "Linux", "Nginx",
+    ],
 };
 
 const SkillsSection = () => {
@@ -23,6 +27,7 @@ const SkillsSection = () => {
     return (
         <motion.section
             ref={ref}
+            id="skills"
             className="font-koulen capitalize w-full max-w-7xl mx-auto px-5 xl:px-0"
             variants={containerVariants}
             initial="hidden"
