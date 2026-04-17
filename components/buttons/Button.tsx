@@ -1,5 +1,8 @@
 import Link from "next/link";
 import React from "react";
+import { motion } from "framer-motion";
+
+const MotionLink = motion.create(Link);
 
 const Button = ({
     mainClass,
@@ -21,11 +24,14 @@ const Button = ({
     rel?: string;
 }) => {
     return (
-        <Link
+        <MotionLink
             className={`fancy ${mainClass} !flex w-fit !items-center gap-2 py-2.5`}
             href={href}
             target={target}
             rel={rel}
+            whileHover={{ y: -3 }}
+            whileTap={{ scale: 0.98 }}
+            transition={{ duration: 0.2, ease: "easeOut" }}
         >
             <span className="top-key"></span>
             {LeftIcon && (
@@ -41,7 +47,7 @@ const Button = ({
             )}
             <span className="bottom-key-1"></span>
             <span className="bottom-key-2"></span>
-        </Link>
+        </MotionLink>
     );
 };
 

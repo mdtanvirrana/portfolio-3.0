@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 const CustomCursor = () => {
+    const [isEnabled, setIsEnabled] = useState(false);
     const [isVisible, setIsVisible] = useState(false);
 
     const cursorX = useMotionValue(-100);
@@ -14,6 +15,28 @@ const CustomCursor = () => {
     const springY = useSpring(cursorY, springConfig);
 
     useEffect(() => {
+        const mediaQuery = window.matchMedia("(hover: hover) and (pointer: fine)");
+        const updateCursorAvailability = () => {
+            const enabled = mediaQuery.matches;
+            setIsEnabled(enabled);
+            if (!enabled) {
+                setIsVisible(false);
+            }
+        };
+
+        updateCursorAvailability();
+        mediaQuery.addEventListener("change", updateCursorAvailability);
+
+        return () => {
+            mediaQuery.removeEventListener("change", updateCursorAvailability);
+        };
+    }, []);
+
+    useEffect(() => {
+        if (!isEnabled) {
+            return;
+        }
+
         const handleMouseMove = (e: MouseEvent) => {
             cursorX.set(e.clientX);
             cursorY.set(e.clientY);
@@ -32,7 +55,11 @@ const CustomCursor = () => {
             document.removeEventListener("mouseleave", handleMouseLeave);
             document.removeEventListener("mouseenter", handleMouseEnter);
         };
-    }, [cursorX, cursorY, isVisible]);
+    }, [cursorX, cursorY, isEnabled, isVisible]);
+
+    if (!isEnabled) {
+        return null;
+    }
 
     return (
         <>

@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { League_Gothic, Koulen } from "next/font/google";
-import "./globals.css";
+import "@/app/globals.css";
 import Nav from "../components/Nav";
 import CustomCursor from "@/components/CustomCursor";
 import LenisProvider from "@/components/LenisProvider";
@@ -30,7 +30,7 @@ export default function RootLayout({
     return (
         <html lang="en">
             <body
-                className={`${leagueGothic.variable} ${koulen.variable} w-full max-w-368 mx-auto px-5 md:px-10`}
+                className={`${leagueGothic.variable} ${koulen.variable} w-full max-w-[92rem] mx-auto px-5 md:px-10`}
             >
                 <ShootingStarsBackground />
                 <LenisProvider>

@@ -6,30 +6,79 @@ import { BiSolidDownload } from "react-icons/bi";
 import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const navItems = [
-
-    "About",
-    "Skills & Expertise",
-    "Portfolio",
-    "Education",
-    "Contact",
+    { label: "About", href: "#about" },
+    { label: "Skills", href: "#skills" },
+    { label: "Experience", href: "#experience" },
+    { label: "Portfolio", href: "#portfolio" },
+    { label: "Snapshot", href: "#highlights" },
+    { label: "Education", href: "#education" },
+    { label: "Contact", href: "#contact" },
 ];
 
+const sectionIds = navItems.map((item) => item.href.slice(1));
+
 const Nav = () => {
-    const [activeHash, setActiveHash] = useState("/"); // initialize here
+    const [activeHash, setActiveHash] = useState("#home");
     const [isSidebarOpen, setIsSidebarOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
     useEffect(() => {
-        const handleHashChange = () =>
-            setActiveHash(window.location.hash || "/");
         const handleScroll = () => setScrolled(window.scrollY > 20);
+        const updateActiveSection = () => {
+            const viewportMidpoint = window.innerHeight * 0.4;
+            let closestSection: string | null = null;
+            let closestDistance = Number.POSITIVE_INFINITY;
 
-        window.addEventListener("hashchange", handleHashChange);
+            for (const sectionId of sectionIds) {
+                const section = document.getElementById(sectionId);
+
+                if (!section) {
+                    continue;
+                }
+
+                const rect = section.getBoundingClientRect();
+                const sectionTop = rect.top;
+                const sectionBottom = rect.bottom;
+                const isSectionInRange = sectionTop <= viewportMidpoint && sectionBottom >= viewportMidpoint;
+
+                if (isSectionInRange) {
+                    closestSection = `#${sectionId}`;
+                    break;
+                }
+
+                const distanceToViewportMidpoint = Math.min(
+                    Math.abs(sectionTop - viewportMidpoint),
+                    Math.abs(sectionBottom - viewportMidpoint)
+                );
+
+                if (distanceToViewportMidpoint < closestDistance) {
+                    closestDistance = distanceToViewportMidpoint;
+                    closestSection = `#${sectionId}`;
+                }
+            }
+
+            const firstSection = document.getElementById(sectionIds[0]);
+            if (firstSection && window.scrollY < firstSection.offsetTop - 160) {
+                setActiveHash("#home");
+                return;
+            }
+
+            if (closestSection) {
+                setActiveHash(closestSection);
+            }
+        };
+
         window.addEventListener("scroll", handleScroll);
+        window.addEventListener("scroll", updateActiveSection);
+        window.addEventListener("resize", updateActiveSection);
+
+        handleScroll();
+        updateActiveSection();
 
         return () => {
-            window.removeEventListener("hashchange", handleHashChange);
             window.removeEventListener("scroll", handleScroll);
+            window.removeEventListener("scroll", updateActiveSection);
+            window.removeEventListener("resize", updateActiveSection);
         };
     }, []);
 
@@ -48,8 +97,8 @@ const Nav = () => {
                 variants={containerVariants}
                 initial="hidden"
                 animate="show"
-                className={`sticky top-0 z-50 w-full transition-all duration-300 ${
-                    scrolled ? "bg-black/60 backdrop-blur-md" : "bg-transparent"
+                className={`sticky top-0 z-50 w-full ${
+                    scrolled ? "bg-black/50 backdrop-blur-xl border-white/6" : "bg-transparent"
                 }`}
             >
                 <div className="flex w-full max-w-7xl py-4 px-5 xl:px-0 mx-auto items-center justify-between">
@@ -64,29 +113,25 @@ const Nav = () => {
                     </motion.a>
 
                     {/* Desktop nav */}
-                    <nav className="hidden md:block">
-                        <ul className="flex items-center gap-8 font-koulen">
+                    <nav className="hidden lg:block">
+                        <ul className="flex items-center gap-6 font-koulen">
                             {navItems.map((item) => {
-                                const hash =
-                                    item === "Home"
-                                        ? "/"
-                                        : `#${item.toLowerCase()}`;
-                                const isActive = activeHash === hash;
+                                const isActive = activeHash === item.href;
                                 return (
-                                    <li key={item}>
+                                    <li key={item.label}>
                                         <a
-                                            href={hash}
-                                            className={`relative text-sm tracking-widest transition-colors duration-200 pb-1 ${
+                                            href={item.href}
+                                            className={`relative text-sm tracking-widest pb-1 ${
                                                 isActive
                                                     ? "text-white"
                                                     : "text-neutral-500 hover:text-neutral-200"
                                             }`}
                                         >
-                                            {item}
+                                            {item.label}
                                             {isActive && (
                                                 <motion.span
                                                     layoutId="nav-underline"
-                                                    className="absolute bottom-0 left-0 w-full h-px bg-white"
+                                                    className="absolute bottom-0 left-0 w-full h-0.5 bg-white"
                                                     transition={{
                                                         type: "spring",
                                                         stiffness: 300,
@@ -102,17 +147,14 @@ const Nav = () => {
                     </nav>
 
                     {/* Download CV */}
-                    <div className="hidden md:block">
+                    <div className="hidden lg:block">
                         <Button
                             mainClass="!py-2"
                             RightIcon={BiSolidDownload}
                             iconClass="text-base"
-<<<<<<< HEAD:components/Nav.tsx
-=======
                             href="/tanvir-rana-resume.pdf"
                             target="_blank"
                             rel="noreferrer"
->>>>>>> 505a33d (update full details base on the resume):src/components/Nav.tsx
                         >
                             Download CV
                         </Button>
@@ -120,7 +162,7 @@ const Nav = () => {
 
                     {/* Mobile hamburger */}
                     <button
-                        className="block md:hidden text-white text-2xl"
+                        className="block lg:hidden text-white text-2xl"
                         onClick={() => setIsSidebarOpen((p) => !p)}
                         aria-label="Toggle menu"
                     >
@@ -135,7 +177,7 @@ const Nav = () => {
                     <>
                         {/* Backdrop */}
                         <motion.div
-                            className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm md:hidden"
+                            className="fixed inset-0 z-40 bg-black/70 backdrop-blur-sm lg:hidden"
                             initial={{ opacity: 0 }}
                             animate={{ opacity: 1 }}
                             exit={{ opacity: 0 }}
@@ -144,7 +186,7 @@ const Nav = () => {
 
                         {/* Drawer */}
                         <motion.div
-                            className="fixed top-0 right-0 h-full w-64 bg-neutral-950 border-l border-neutral-800 z-50 flex flex-col pt-20 px-8 md:hidden"
+                            className="fixed top-0 right-0 h-full w-72 bg-neutral-950 border-l border-neutral-800 z-50 flex flex-col pt-20 px-8 lg:hidden"
                             initial={{ x: "100%" }}
                             animate={{ x: 0 }}
                             exit={{ x: "100%" }}
@@ -156,30 +198,26 @@ const Nav = () => {
                         >
                             <ul className="flex flex-col gap-6 font-koulen">
                                 {navItems.map((item, idx) => {
-                                    const hash =
-                                        item === "Home"
-                                            ? "/"
-                                            : `#${item.toLowerCase()}`;
-                                    const isActive = activeHash === hash;
+                                    const isActive = activeHash === item.href;
                                     return (
                                         <motion.li
-                                            key={item}
+                                            key={item.label}
                                             initial={{ opacity: 0, x: 20 }}
                                             animate={{ opacity: 1, x: 0 }}
                                             transition={{ delay: idx * 0.07 }}
                                         >
                                             <a
-                                                href={hash}
+                                                href={item.href}
                                                 onClick={() =>
                                                     setIsSidebarOpen(false)
                                                 }
-                                                className={`text-2xl tracking-widest transition-colors ${
+                                                className={`text-2xl tracking-widest ${
                                                     isActive
                                                         ? "text-white"
                                                         : "text-neutral-500 hover:text-white"
                                                 }`}
                                             >
-                                                {item}
+                                                {item.label}
                                             </a>
                                         </motion.li>
                                     );
@@ -191,12 +229,9 @@ const Nav = () => {
                                     mainClass="!py-2 w-full"
                                     RightIcon={BiSolidDownload}
                                     iconClass="text-base"
-<<<<<<< HEAD:components/Nav.tsx
-=======
                                     href="/tanvir-rana-resume.pdf"
                                     target="_blank"
                                     rel="noreferrer"
->>>>>>> 505a33d (update full details base on the resume):src/components/Nav.tsx
                                 >
                                     Download CV
                                 </Button>

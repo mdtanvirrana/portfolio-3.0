@@ -56,15 +56,15 @@ const ContactSection = () => {
                                 className="flex items-start gap-4 group"
                                 variants={itemVariants}
                             >
-                                <div className="w-9 h-9 border border-neutral-800 flex items-center justify-center shrink-0 group-hover:border-neutral-600 transition-colors duration-300">
-                                    <item.icon className="text-neutral-600 text-xs group-hover:text-neutral-400 transition-colors duration-300" />
+                                <div className="w-9 h-9 border border-neutral-800 flex items-center justify-center shrink-0 group-hover:border-neutral-600">
+                                    <item.icon className="text-neutral-600 text-xs group-hover:text-neutral-400" />
                                 </div>
                                 <div>
                                     <span className="text-neutral-700 text-xs tracking-widest block mb-0.5">
                                         {item.label}
                                     </span>
                                     {item.href ? (
-                                        <a href={item.href} className="text-neutral-400 text-sm normal-case hover:text-white transition-colors duration-200">
+                                        <a href={item.href} className="text-neutral-400 text-sm normal-case hover:text-white">
                                             {item.value}
                                         </a>
                                     ) : (
@@ -84,7 +84,7 @@ const ContactSection = () => {
                                     href={s.href}
                                     aria-label={s.label}
                                     className="w-10 h-10 border border-neutral-800 flex items-center justify-center text-neutral-600
-                                               hover:border-neutral-500 hover:text-white transition-all duration-300"
+                                               hover:border-neutral-500 hover:text-white"
                                     whileHover={{ scale: 1.08, y: -2 }}
                                     whileTap={{ scale: 0.95 }}
                                 >

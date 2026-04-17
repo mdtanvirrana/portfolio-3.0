@@ -64,13 +64,12 @@ const SkillsSection = () => {
                                     className="relative border border-neutral-800 text-neutral-500 px-4 py-1.5 text-sm tracking-widest normal-case
                                                overflow-hidden group
                                                before:absolute before:inset-0 before:bg-white before:scale-x-0 before:origin-left
-                                               before:transition-transform before:duration-300 before:ease-out
-                                               hover:before:scale-x-100 hover:border-white transition-colors duration-300"
+                                               hover:before:scale-x-100 hover:border-white"
                                     variants={skillPillVariants}
                                     whileHover={{ scale: 1.03 }}
                                     whileTap={{ scale: 0.97 }}
                                 >
-                                    <span className="relative z-10 group-hover:text-black transition-colors duration-300">
+                                    <span className="relative z-10 group-hover:text-black">
                                         {skill}
                                     </span>
                                 </motion.button>

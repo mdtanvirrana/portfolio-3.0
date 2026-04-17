@@ -59,13 +59,13 @@ const EducationSection = () => {
                 {education.map((edu, idx) => (
                     <motion.div
                         key={idx}
-                        className="relative border border-neutral-800 p-7 hover:border-neutral-700 transition-colors duration-300 group overflow-hidden"
+                        className="relative border border-neutral-800 p-7 hover:border-neutral-700 group overflow-hidden"
                         variants={itemVariants}
                         whileHover={{ x: 4 }}
                         transition={{ duration: 0.2 }}
                     >
                         {/* Ghost number */}
-                        <span className="absolute right-6 top-1/2 -translate-y-1/2 text-[7rem] font-bold text-neutral-900 select-none leading-none pointer-events-none group-hover:text-neutral-800/80 transition-colors duration-500">
+                        <span className="absolute right-6 top-1/2 -translate-y-1/2 text-[7rem] font-bold text-neutral-900 select-none leading-none pointer-events-none group-hover:text-neutral-800/80">
                             {String(idx + 1).padStart(2, "0")}
                         </span>
 
@@ -102,7 +102,7 @@ const EducationSection = () => {
                                         <motion.span
                                             key={hIdx}
                                             className="text-xs text-neutral-600 border border-neutral-800 px-2.5 py-1 tracking-widest
-                                                       group-hover:border-neutral-700 group-hover:text-neutral-400 transition-colors duration-300"
+                                                       group-hover:border-neutral-700 group-hover:text-neutral-400"
                                             initial={{ opacity: 0, scale: 0.9 }}
                                             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
                                             transition={{ delay: 0.4 + idx * 0.1 + hIdx * 0.06 }}

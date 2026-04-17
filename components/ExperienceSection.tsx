@@ -70,7 +70,7 @@ const ExperienceSection = () => {
 
                             {/* Card */}
                             <motion.div
-                                className="border border-neutral-800 p-6 hover:border-neutral-700 transition-colors duration-300 group"
+                                className="border border-neutral-800 p-6 hover:border-neutral-700 group"
                                 whileHover={{ x: 5 }}
                                 transition={{ duration: 0.2 }}
                             >
@@ -100,7 +100,7 @@ const ExperienceSection = () => {
                                         <span
                                             key={tIdx}
                                             className="text-xs text-neutral-600 border border-neutral-800 px-2.5 py-1 tracking-widest
-                                                       group-hover:border-neutral-700 group-hover:text-neutral-400 transition-colors duration-300"
+                                                       group-hover:border-neutral-700 group-hover:text-neutral-400"
                                         >
                                             {tag}
                                         </span>
