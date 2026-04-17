@@ -3,7 +3,7 @@ import React, { useState, useEffect } from "react";
 import { motion, AnimatePresence, Variants } from "framer-motion";
 import Button from "./buttons/Button";
 import { BiSolidDownload } from "react-icons/bi";
-import { AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
+import { AiFillStar, AiOutlineMenu, AiOutlineClose } from "react-icons/ai";
 
 const navItems = [
     { label: "About", href: "#about" },
@@ -105,11 +105,14 @@ const Nav = () => {
                     {/* Logo */}
                     <motion.a
                         href="/"
-                        className="font-koulen text-white text-xl tracking-widest"
+                        className="inline-flex items-center gap-3 text-white"
                         whileHover={{ opacity: 0.7 }}
                         transition={{ duration: 0.2 }}
                     >
-                        TR<span className="text-neutral-500">.</span>
+                        <span className="flex h-9 w-9 items-center justify-center rounded-full border border-white/10 bg-white/5 text-base shadow-[0_0_24px_rgba(255,255,255,0.08)]">
+                            <AiFillStar aria-hidden="true" />
+                        </span>
+                        <span className="font-koulen text-xl tracking-[0.32em]">STAR</span>
                     </motion.a>
 
                     {/* Desktop nav */}

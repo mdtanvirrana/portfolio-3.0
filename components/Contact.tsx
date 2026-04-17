@@ -3,7 +3,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ImArrowUpRight2 } from "react-icons/im";
 import {
-    FaLinkedinIn, FaGithub,
+    FaLinkedinIn, FaGithub, FaFacebookF, FaInstagram,
     FaEnvelope, FaPhoneAlt, FaMapMarkerAlt,
 } from "react-icons/fa";
 import { containerVariants, itemVariants, lineVariants, useScrollReveal } from "@/lib/utils";
@@ -18,6 +18,8 @@ const contactInfo = [
 const socials = [
     { icon: FaLinkedinIn, label: "LinkedIn", href: "https://www.linkedin.com/in/mdtanvirrana" },
     { icon: FaGithub, label: "GitHub", href: "https://github.com/mdtanvirrana" },
+    { icon: FaFacebookF, label: "Facebook", href: "https://www.facebook.com/mdtanvirrana0/" },
+    { icon: FaInstagram, label: "Instagram", href: "https://www.instagram.com/tanvir.rana.soikat" },
 ];
 
 const ContactSection = () => {
@@ -83,6 +85,8 @@ const ContactSection = () => {
                                     key={idx}
                                     href={s.href}
                                     aria-label={s.label}
+                                    target="_blank"
+                                    rel="noreferrer"
                                     className="w-10 h-10 border border-neutral-800 flex items-center justify-center text-neutral-600
                                                hover:border-neutral-500 hover:text-white"
                                     whileHover={{ scale: 1.08, y: -2 }}

@@ -1,12 +1,14 @@
 "use client";
 import React from "react";
 import { motion } from "framer-motion";
-import { FaEnvelope, FaGithub, FaLinkedinIn } from "react-icons/fa";
+import { FaEnvelope, FaFacebookF, FaGithub, FaInstagram, FaLinkedinIn } from "react-icons/fa";
 import { containerVariants, itemVariants, lineVariants, useScrollReveal } from "@/lib/utils";
 
 const socials = [
     { label: "LinkedIn", icon: FaLinkedinIn, href: "https://www.linkedin.com/in/mdtanvirrana" },
     { label: "GitHub", icon: FaGithub, href: "https://github.com/mdtanvirrana" },
+    { label: "Facebook", icon: FaFacebookF, href: "https://www.facebook.com/mdtanvirrana0/" },
+    { label: "Instagram", icon: FaInstagram, href: "https://www.instagram.com/tanvir.rana.soikat" },
     { label: "Email", icon: FaEnvelope, href: "mailto:tanvir.rana.soikat@gmail.com" },
 ];
 
@@ -80,6 +82,8 @@ const About = () => {
                                 key={i}
                                 href={social.href}
                                 aria-label={social.label}
+                                target={social.href.startsWith("http") ? "_blank" : undefined}
+                                rel={social.href.startsWith("http") ? "noreferrer" : undefined}
                                 className="w-10 h-10 border border-neutral-800 flex items-center justify-center text-neutral-500
                                            hover:border-white hover:text-white"
                                 whileHover={{ scale: 1.08, y: -2 }}
