@@ -139,7 +139,7 @@ const Portfolio = () => {
                                 </div>
                             </motion.div>
 
-                            <div className={`panel p-6 md:p-8 flex flex-col justify-between ${i % 2 !== 0 ? "lg:order-1" : ""}`}>
+                            <div className={`panel p-6 md:p-8 flex flex-col gap-6 justify-between ${i % 2 !== 0 ? "lg:order-1" : ""}`}>
                                 <div>
                                     <span className="text-neutral-500 text-xs tracking-widest uppercase">
                                         Case Study
