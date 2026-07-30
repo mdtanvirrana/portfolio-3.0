@@ -27,20 +27,20 @@ const projects: Project[] = [
     },
     {
         id: 2,
-        title: "Wallet-Based Payment Application",
-        description:
-            "Built secure backend workflows for wallet top-up, transfers, PIN authentication, notifications, Stripe integration, and OAuth, with idempotency handling to prevent duplicate financial transactions.",
-        techStack: ["Laravel", "MySQL", "React Native", "Stripe", "OAuth"],
-        live: "https://play.google.com/store/apps/details?id=com.swanpay",
-        type: "Fullstack",
-    },
-    {
-        id: 3,
         title: "Brandzone E-commerce Platform",
         description:
             "Developed a role-based SaaS-style e-commerce system for users, vendors, brands, and super admins with multi-variant inventory, Stripe payments, KYC verification, and secure vendor onboarding.",
         techStack: ["Next.js", "TypeScript", "Laravel", "MySQL", "Stripe"],
         live: "https://brandszoneglobal.com",
+        type: "Fullstack",
+    },
+    {
+        id: 3,
+        title: "Gulshan North Club Website",
+        description:
+            "Built a full-stack club website comprising a public-facing site and an internal admin panel, with admin modules for managing the Board of Directors, events, notices, facilities, and club history.",
+        techStack: ["Next.js", "TypeScript", "Laravel", "MySQL", "Admin Panel"],
+        live: "https://gnclbd.com",
         type: "Fullstack",
     },
     {
@@ -54,6 +54,15 @@ const projects: Project[] = [
     },
     {
         id: 5,
+        title: "Chattogram Club Members App",
+        description:
+            "Built the backend for an ERP-integrated club membership app, exposing REST APIs for real-time member balance sync, ledgers, invoices, vouchers, BOD info, events, facilities, and notices.",
+        techStack: ["Laravel", "SQL Server", "React Native", "REST API"],
+        live: "https://play.google.com/store/apps/details?id=com.swanpay",
+        type: "Backend Heavy",
+    },
+    {
+        id: 6,
         title: "AllApply Government Service Platform",
         description:
             "Developed a multi-role service platform for overseas jobs, student applications, and visa-related workflows with dedicated dashboards for users, service providers, agencies, and admins.",
