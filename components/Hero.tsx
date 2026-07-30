@@ -7,7 +7,7 @@ import { BiSolidDownload } from "react-icons/bi";
 
 const stats = [
     { value: "2+", label: "Years Building Products" },
-    { value: "5", label: "Highlighted Platforms" },
+    { value: "6", label: "Highlighted Platforms" },
 ];
 
 const badges = ["Laravel", "Next.js", "Remix", "Payments", "ERP"];
