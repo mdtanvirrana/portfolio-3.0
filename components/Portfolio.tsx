@@ -49,7 +49,7 @@ const projects: Project[] = [
         description:
             "Built a real-time hospitality order management system with table-state handling, discount approval workflow, single-device login restriction, and transaction-based concurrency control.",
         techStack: ["Laravel", "Blade", "SQL Server", "Concurrency Control"],
-        live: "#",
+        live: "https://waiterapps.com/",
         type: "Backend Heavy",
     },
     {
@@ -223,15 +223,17 @@ const Portfolio = () => {
                                 ))}
                             </div>
                             {project.live !== "#" && (
-                                <Link
-                                    href={project.live}
-                                    target="_blank"
-                                    rel="noreferrer"
-                                    className="inline-flex mt-4 text-xs tracking-widest text-neutral-400 hover:text-white"
-                                >
-                                    Visit Project
-                                </Link>
-                            )}
+    <Link
+        href={project.live}
+        target="_blank"
+        rel="noreferrer"
+        className="inline-flex items-center gap-2 mt-6 border border-neutral-700 px-4 py-2 text-xs tracking-widest text-neutral-300
+                   hover:border-white hover:bg-white hover:text-black transition-colors"
+    >
+        Visit Project
+        <ImArrowUpRight2 className="text-sm" />
+    </Link>
+)}
                             </div>
                         </motion.div>
                     ))}
