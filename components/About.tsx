@@ -67,7 +67,7 @@ const About = () => {
                         <p className="text-neutral-500 text-sm leading-relaxed">
                             Alongside backend architecture, I also enjoy frontend work that feels
                             clear and usable. That includes my three-month frontend internship at
-                            Bangladeshi Software from July 2024 to September 2024, where I
+                            Bangladeshi Software Ltd from August 2024 to October 2024, where I
                             strengthened my UI implementation and component-based workflow.
                         </p>
                         <p className="text-neutral-400 text-sm leading-relaxed">
