@@ -10,13 +10,13 @@ const experiences = [
         company: "HSBLCO Solution LLC",
         type: "Professional Experience",
         description:
-            "Developing scalable multi-tenant ERP systems, wallet-based payment applications, e-commerce platforms, and operational management software with a strong focus on clean backend architecture and secure workflows.",
-        tags: ["Laravel", "Remix", "Next.js", "React Native", "MySQL", "SQL Server"],
+            "Developing scalable multi-tenant ERP systems, e-commerce platforms, club membership websites and admin panels, and operational management software with a strong focus on clean backend architecture and secure workflows.",
+        tags: ["Laravel", "Remix", "Next.js", "TypeScript", "React Native", "MySQL", "SQL Server"],
     },
     {
-        period: "Jul 2024 – Sep 2024",
+        period: "Aug 2024 – Oct 2024",
         role: "Frontend Developer Intern",
-        company: "Bangladeshi Software",
+        company: "Bangladeshi Software Ltd",
         type: "Internship",
         description:
             "Completed a three-month internship focused on frontend development, translating designs into responsive interfaces, improving UI consistency, and strengthening practical workflow experience with modern component-based development.",
