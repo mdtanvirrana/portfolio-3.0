@@ -14,10 +14,10 @@ const skills: Record<string, string[]> = {
         "React", "Next.js", "Remix", "TypeScript", "JavaScript", "Tailwind CSS", "Redux", "Framer Motion",
     ],
     "Back-End Development": [
-        "PHP", "Laravel", "REST API Architecture", "MySQL", "SQL Server", "Repository Pattern", "Service Layer",
+        "PHP", "Laravel", "REST API", "MySQL", "SQL Server", "Repository Pattern",
     ],
     "Architecture & Tools": [
-        "DTOs", "Enums", "Action-Based Logic", "Idempotency", "Concurrency Control", "Git", "Linux", "Nginx",
+        "Git", "Linux", "Nginx",
     ],
 };
 
