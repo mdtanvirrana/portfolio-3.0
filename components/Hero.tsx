@@ -47,14 +47,13 @@ const Hero = () => {
 
             <div className="grid grid-cols-1 xl:grid-cols-[1.4fr_0.8fr] gap-10 items-end">
                 <div>
-                    <motion.h1
-                        className="text-6xl sm:text-7xl lg:text-[6.8rem] text-white leading-[0.95] mb-6"
-                        variants={itemVariants}
-                    >
-                        Tanvir Rana builds
-                        <span className="block text-neutral-500">reliable product systems.</span>
-                    </motion.h1>
-
+<motion.h1
+    className="text-4xl sm:text-6xl md:text-7xl lg:text-[6.8rem] text-white leading-[1.05] sm:leading-[0.95] mb-6"
+    variants={itemVariants}
+>
+    Tanvir Rana builds
+    <span className="block text-neutral-500">reliable product systems.</span>
+</motion.h1>
                     <motion.div className="max-w-3xl space-y-3 mb-8" variants={itemVariants}>
                         <p className="text-neutral-300 text-base sm:text-lg leading-relaxed normal-case">
                             Full stack developer focused on multi-tenant ERP, finance workflows,
